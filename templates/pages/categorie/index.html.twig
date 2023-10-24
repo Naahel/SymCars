@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SymCars - Catégories{% endblock %}
+
+{% block body %}
+<div class="container mt-4 mb-4">
+    <h1 class="mb-4">Articles de la catégorie : {{ categorie.titre }}</h1>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px">
+        {% for article in articles %}
+        <div class="card">
+            <img class="card-img-top" src="https://placehold.co/300x200?text={{ article.titre }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ article.titre }}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-dark">Lire l'article</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

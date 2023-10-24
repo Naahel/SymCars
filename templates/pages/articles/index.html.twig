@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SymCars - Articles{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Les articles</h1>
+
+    <table class="table table-hover mt-4">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Texte</th>
+            <th scope="col">Date de publication</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr class="table-active">
+                <th scope="row">{{ article.id }}</th>
+                <td>{{ article.titre }}</td>
+                <td>{{ article.category != null ? article.category.titre : 'Pas de catégorie' }}</td>
+                <td>{{ article.texte }}</td>
+                <td>{{ article.datePublication|date('d/m/Y') }}</td>
+                <td>{{ article.auteur }}</td>
+                <td><img style="width: 100px" src="{{ article.image }}" alt="Image de l'article {{ article.titre }}"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

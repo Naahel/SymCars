@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SymCars - Véhicules{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Les véhicules</h1>
+
+        <a href="vehicules/nouveau"><button type="button" class="btn btn-dark mb-4">Ajouter</button></a>
+        {% if not vehicules.items is same as ([]) %}
+        <small>
+            <div class="count">
+                {{ vehicules.getTotalItemCount }} véhicules enregistrés.
+            </div>
+        </small>
+
+        <table class="table table-hover mt-4">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Modèle</th>
+                <th scope="col">Marque</th>
+                <th scope="col">Kilométrage</th>
+                <th scope="col">Places</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehicule in vehicules %}
+                    <tr class="table-active">
+                        <th scope="row">{{ vehicule.id }}</th>
+                        <td>{{ vehicule.name }}</td>
+                        <td>{{ vehicule.brand }}</td>
+                        <td>{{ vehicule.mileage }}</td>
+                        <td>{{ vehicule.place }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation d-flex justify-content-center mt-4">
+            {{ knp_pagination_render(vehicules) }}
+        </div>
+        {% else %}
+        <small>
+            <div class="count">
+                Il n'y a aucun véhicule enregistré.
+            </div>
+        </small>
+        {% endif %}
+    </div>
+{% endblock %}

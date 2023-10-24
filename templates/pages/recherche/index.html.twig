@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SymCars - Recherche{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Effectuer une recherche</h1>
+    <form action="{{ path('app_resultat') }}" method="POST">
+        <label for="recherche">Recherche :</label>
+        <input type="text" name="search" id="titre" class="form-control" placeholder="Recherche">
+        <input type="submit" class="btn btn-primary mt-4" value="Rechercher">
+    </form>
+</div>
+{% endblock %}

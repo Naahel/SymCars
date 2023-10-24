@@ -7,10 +7,23 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="/">Accueil
+          <a class="nav-link" href="/">Accueil
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_vehicules') }}">Véhicules</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_articles') }}">Articles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_lucky_number') }}">Lucky</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_recherche') }}">Recherche</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

@@ -1,0 +1,68 @@
+{% extends "base.html.twig" %}
+
+{% block title %}SymCars - Accueil{% endblock %}
+
+{% block body %}
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Show a second modal and hide this one with the button below.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Hide this modal and show the first with the button below.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container mt-4">
+    <div class="jumbotron">
+        <h1 class="display-4">Bienvenue sur SymCars !</h1>
+        <p class="lead">SymCars est un site internet sur lequel vous trouverez de nombreuses exclusivités sur les dernières sorties de véhicules. Pleins d'informations à propos de tous vos modèles de voitures vous attendent sur notre site.</p>
+        <hr class="my-4">
+        <p>Vous pouvez créer votre compte pour bénéficier d'un programme de fidélité sur la visibilité d'exclusivités sur les derniers modèles. N'attendez plus pour vous inscrire !</p>
+        <button class="btn btn-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button>
+    </div>
+    <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+        <div class="card mb-4" style="width: 18rem;">
+            <img class="card-img-top" src="{{ article.image }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ article.titre }}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-dark">Lire l'article</a>
+            </div>
+        </div>
+        {% for categorie in categories %}
+        <div class="card" style="height: 330px">
+            <img src="https://placehold.co/300x200?text={{ categorie.titre }}" class="card-img-top" alt="{{ categorie.titre }}">
+            <div class="card-body">
+                <p class="card-text">{{ categorie.titre }}</p>
+                <a href="{{  path('app_categorie', { categorie: categorie.id }) }}" class="btn btn-dark">Accéder à la catégorie</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
